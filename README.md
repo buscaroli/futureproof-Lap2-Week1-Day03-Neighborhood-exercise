@@ -46,7 +46,7 @@ Following the brief we are considering that out database only contains data for 
 | POST        | /address  | create    |
 
 The API will return either:
-- an error if the object already existed
+- an error if the entry already existed
 - an notification that the entry has been created
 
 
