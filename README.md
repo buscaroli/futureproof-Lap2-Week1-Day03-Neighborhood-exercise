@@ -39,7 +39,8 @@ Following the brief we are considering that out database only contains data for 
 ### Store people, houses and addresses
 
 
-| VERB        | PATH.     | ACTION    |
+| VERB        | PATH      | ACTION    |
+ ---          | ---       | ---       
 | POST        | /houses   | create    |
 | POST        | /people   | create    |
 | POST        | /address  | create    |
@@ -49,7 +50,8 @@ Following the brief we are considering that out database only contains data for 
 ### Look up a house, its address and owner
 
 
-| VERB           | PATH.         | ACTION   |
+| VERB           | PATH          | ACTION   |
+ ---             | ---           | ---      
 | GET            | /houses/:id   |  show    |
 | GET            | /people/:id   |  show    |
 | GET            | /address/:id  |  show    |
@@ -60,7 +62,8 @@ Following the brief we are considering that out database only contains data for 
 
 
 
-| VERB           | PATH.         | ACTION    |
+| VERB           | PATH          | ACTION    |
+ ---             | ---           | ---       
 | GET            | /people       |  index    |
 
 #### Query
@@ -75,7 +78,7 @@ fetch(`http://neighbourhood.com/people?minAge=${minAge}&maxAge=${maxAge}&househo
 
 ##### Example of the object that coul dbe sent
 
-```
+```js
 {
 minAge = 18,
 maxAge = 35,
@@ -85,10 +88,14 @@ householdGreaterThan = 4
 
 ##### Example of a postgreSQL query
 
+
 ```sql
-  SELECT * from people WHERE age GT minAge
+  SELECT *
+  FROM people 
+  WHERE age BETWEEN minAge AND maxAge 
+  AND household_size >= householdGreaterThan;
 ```
 
-
+## Determine the responses that should be returned and the content types of these requests and responses
 
 
