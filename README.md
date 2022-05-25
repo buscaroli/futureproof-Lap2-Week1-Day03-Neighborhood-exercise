@@ -45,6 +45,9 @@ Following the brief we are considering that out database only contains data for 
 | POST        | /people   | create    |
 | POST        | /address  | create    |
 
+The API will return either:
+- an error if the object already existed
+- an notification that the entry has been created
 
 
 ### Look up a house, its address and owner
@@ -56,17 +59,26 @@ Following the brief we are considering that out database only contains data for 
 | GET            | /people/:id   |  show    |
 | GET            | /address/:id  |  show    |
 
+The API will return either:
+
+- an empty array ( [] ) if no match was found
+- an array of the appropriate entry (person, house or address) 
 
 
 ### Look up people in our neighbourhood within certain age brackets and with specific household sizes
-
 
 
 | VERB           | PATH          | ACTION    |
  ---             | ---           | ---       
 | GET            | /people       |  index    |
 
-#### Query
+The API will return either:
+
+- an empty array ( [] ) if no match was found
+- an array of the people that match the criteria 
+
+
+#### Queries
 
 ##### User enter data into a form
 The address bar would look like this:
@@ -76,7 +88,8 @@ The address bar would look like this:
 ##### Example of a javascript query 
 fetch(`http://neighbourhood.com/people?minAge=${minAge}&maxAge=${maxAge}&householdGreaterThan=${hgt}`
 
-##### Example of the object that coul dbe sent
+##### Example of the object that could be sent
+
 
 ```js
 {
@@ -95,7 +108,5 @@ householdGreaterThan = 4
   WHERE age BETWEEN minAge AND maxAge 
   AND household_size >= householdGreaterThan;
 ```
-
-## Determine the responses that should be returned and the content types of these requests and responses
 
 
