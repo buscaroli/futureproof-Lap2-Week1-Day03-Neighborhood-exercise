@@ -34,26 +34,60 @@ Considering the brief we decided to have three tables:
 
 ## Consider the requests our API should be capable of handling
 
+Following the brief we are considering that out database only contains data for one neighbourhood.
 
 ### Store people, houses and addresses
-POST
+
 
 | VERB        | PATH.     | ACTION    |
-| POST        | /houses   |  create   |
+| POST        | /houses   | create    |
 | POST        | /people   | create    |
 | POST        | /address  | create    |
 
 
-### Look up a house, its address and owner
-GET
 
+### Look up a house, its address and owner
+
+
+| VERB           | PATH.         | ACTION   |
+| GET            | /houses/:id   |  show    |
+| GET            | /people/:id   |  show    |
+| GET            | /address/:id  |  show    |
 
 
 
 ### Look up people in our neighbourhood within certain age brackets and with specific household sizes
-GET
 
 
+
+| VERB           | PATH.         | ACTION    |
+| GET            | /people       |  index    |
+
+#### Query
+
+##### User enter data into a form
+The address bar would look like this:
+
+`Browser Address bar: http://neighbourhood.com/people?minAge=18&maxAge=35&householdGreaterThan=4`
+
+##### Example of a javascript query 
+fetch(`http://neighbourhood.com/people?minAge=${minAge}&maxAge=${maxAge}&householdGreaterThan=${hgt}`
+
+##### Example of the object that coul dbe sent
+
+```
+{
+minAge = 18,
+maxAge = 35,
+householdGreaterThan = 4
+}
+```
+
+##### Example of a postgreSQL query
+
+```sql
+  SELECT * from people WHERE age GT minAge
+```
 
 
 
