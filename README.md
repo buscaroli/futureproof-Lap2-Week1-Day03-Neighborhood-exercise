@@ -34,7 +34,7 @@ Considering the brief we decided to have three tables:
 
 ## Consider the requests our API should be capable of handling
 
-Following the brief we are considering that out database only contains data for one neighbourhood.
+Following the brief we are considering that our database contains data for just one neighbourhood.
 
 ### Store people, houses and addresses
 
